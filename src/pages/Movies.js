@@ -1,18 +1,31 @@
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, FlatList } from "react-native";
 import React from "react";
+import { movies } from "../../movies";
+import MovieCard from "../components/MovieCard";
 
 export default function Movies({ navigation }) {
-  function goToMovieDetail() {
+  function goToMovieDetail(movie) {
     //navigation.replace("MovieDetail"); //iniciar nova rota
-    navigation.navigate("MovieDetail");
+    navigation.navigate("MovieDetail", { movieSelected: movie });
   }
 
   return (
-    <View>
-      <Text>dfgdfgdfg</Text>
-      <Button title="Detalhes" onPress={goToMovieDetail} />
+    <View style={styles.container}>
+      <FlatList
+        data={movies}
+        showsVerticalScrollIndicator={false}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <MovieCard movie={item} action={() => goToMovieDetail(item)} />
+        )}
+      />
     </View>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 16,
+    paddingTop: 10,
+  },
+});
