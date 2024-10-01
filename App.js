@@ -5,6 +5,9 @@ import Movies from "./src/pages/Movies";
 import MovieDetail from "./src/pages/MovieDetail";
 import ScreenA from "./src/pages/ScreenA";
 import ScreenB from "./src/pages/ScreenB";
+import Pessoas from "./src/pages/Pessoas";
+import DetalhePessoa from "./src/pages/DetalhePessoa";
+import Pokemon from "./src/pages/Pokemon";
 import { Button, Text } from "react-native";
 
 const AppStack = createNativeStackNavigator();
@@ -21,7 +24,10 @@ function AppStackNavigator() {
         },
       }}
     >
-      <AppStack.Screen
+      <AppStack.Screen name="Pokemon" component={Pokemon} />
+      {/* <AppStack.Screen name="Pessoas" component={Pessoas} /> */}
+      {/* <AppStack.Screen name="DetalhePessoa" component={DetalhePessoa} /> */}
+      {/* <AppStack.Screen
         name="Movies"
         options={{
           headerTitle: "Filmes",
@@ -37,7 +43,7 @@ function AppStackNavigator() {
           headerTitle: "Detalhes do filme",
         }}
         component={MovieDetail}
-      />
+      /> */}
     </AppStack.Navigator>
   );
 }
